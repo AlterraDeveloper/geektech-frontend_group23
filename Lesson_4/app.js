@@ -129,7 +129,7 @@ cardPanInput.addEventListener("input", function () {
     messageDiv.classList.add('error');
   }
 });
-
+ 
 function formatCardPan(cardPan) {
   var groups = [];
   cardPan = onlyDigits(cardPan);
