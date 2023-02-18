@@ -1,5 +1,7 @@
 var passwordInput = document.querySelector("#password");
+var passwordInput2 = document.querySelector("#password2");
 var linesContainer = document.getElementById("lines");
+var showHideBtn = document.querySelector("#showHideBtn");
 
 passwordInput.addEventListener("input", function (event) {
   var enteredPassword = event.target.value;
@@ -7,6 +9,26 @@ passwordInput.addEventListener("input", function (event) {
   var indicators = createIndicators(strength);
   linesContainer.innerHTML = "";
   linesContainer.append(...indicators);
+});
+
+// showHideBtn.addEventListener("mouseover", function () {
+//   passwordInput.setAttribute("type", "text");
+// });
+
+// showHideBtn.addEventListener("mouseleave", function () {
+//   passwordInput.setAttribute("type", "password");
+// });
+
+showHideBtn.addEventListener("click", function () {
+  var icon = showHideBtn.children[0];
+  console.log(icon.classList);
+  if (icon.classList.contains("fa-eye")) {
+    passwordInput.setAttribute("type", "text");
+  } else {
+    passwordInput.setAttribute("type", "password");
+  }
+  icon.classList.toggle("fa-eye");
+  icon.classList.toggle("fa-eye-slash");
 });
 
 function passwordHas8Length(passwordText) {
@@ -61,3 +83,10 @@ function createIndicators(count) {
   }
   return indicators;
 }
+
+passwordInput2.addEventListener("input", function () {
+  setTimeout(function () {
+    var pass2 = passwordInput2.value;
+    passwordInput2.value = "*".repeat(pass2.length);
+  }, 250); // 0.5 sec
+});
